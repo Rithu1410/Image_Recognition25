@@ -1,0 +1,16 @@
+# Ignore virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Large binaries
+*.pyd
+*.dll
+*.h5
+*.log
+
+# IDE configs
+.vscode/
+.idea/
