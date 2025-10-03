@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EYERA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">EYERA</h1>
+
+    <div class="eye-section">
+      <img src="uploads/WhatsApp Image 2025-05-23 at 09.15.31_8c9f4b58.jpg" alt="Eye diagram" class="eye-image">
+
+      <div class="info-card">
+        <form action="/" method="POST" enctype="multipart/form-data">
+          <input type="file" name="image" accept="image/*" required>
+          <button type="submit" class="upload-btn">PREDICT</button>
+        </form>
+
+        {% if prediction %}
+          <div class="result">
+            <h2>Prediction:</h2>
+            <p>{{ prediction }}</p>
+            
+            {% if localisation %}
+              <p class="detail"><strong>Localisation:</strong> {{ localisation }}</p>
+            {% endif %}
+            
+            {% if damage_percent is not none %}
+              <p class="detail"><strong>Damage Percentage:</strong> {{ damage_percent }}%</p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if image_path %}
+          <div>
+            <h3>Uploaded Image:</h3>
+            <img src="uploads/WhatsApp Image 2025-05-23 at 09.15.31_8c9f4b58.jpg"  alt="Uploaded Eye Image" width="200">
+          </div>
+        {% endif %}
+      </div>
+    </div> 
+
+    <div class="slider-container">
+      <span>Healthy Eye</span>
+      <input type="range" min="0" max="100" value="30" class="slider">
+      <span>Severe</span>
+    </div>
+  </div>
+</body>
+</html>
